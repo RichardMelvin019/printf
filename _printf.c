@@ -19,7 +19,8 @@ int _printf(const char *format, ...)
 	count = 0;
 	if (format != NULL)
 	{
-		_format(format, &count, symbol_matrix, args);
+		if (_format(format, &count, symbol_matrix, args) == -1)
+			return (-1);
 	}
 	else
 		return (-1);
@@ -34,7 +35,7 @@ int _printf(const char *format, ...)
  * @count: counter
  * @symbol_matrix: symbol matrix
  * @args: arguments
- * Return: 0
+ * Return: 0 success, -1 error
 */
 
 int _format(const char *format, int *count,
@@ -53,7 +54,7 @@ int _format(const char *format, int *count,
 		{
 			i++;
 			if (format[i] == '\0')
-				break;
+				return (-1);
 			if (format_check(format[i], symbol_matrix, args, count) == -1)
 			{
 				_putchar('%');
