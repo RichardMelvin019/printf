@@ -21,6 +21,8 @@ int _printf(const char *format, ...)
 	{
 		_format(format, &count, symbol_matrix, args);
 	}
+	else
+		return (-1);
 
 	va_end(args);
 	return (count);
@@ -50,6 +52,8 @@ int _format(const char *format, int *count,
 		else
 		{
 			i++;
+			if (format[i] == '\0')
+				break;
 			if (format_check(format[i], symbol_matrix, args, count) == -1)
 			{
 				_putchar('%');
@@ -74,6 +78,13 @@ int format_check(char symbol, fmt_spec symbol_matrix[],
 	va_list args, int *count)
 {
 	int row;
+
+	if (symbol == '%')
+	{
+		_putchar(symbol);
+		(*count)++;
+		return (0);
+	}
 
 	for (row = 0; symbol_matrix[row].symbol != '\0'; row++)
 	{
