@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 	int count;
 	fmt_spec symbol_matrix[] = {
 		{'c', _char}, {'s', _string},
+		{'d', _dec}, {'i', _int},
 		{'\0', NULL}
 	};
 

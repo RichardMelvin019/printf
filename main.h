@@ -24,5 +24,7 @@ int format_check(char symbol, fmt_spec symbol_matrix[],
 va_list args, int *count);
 void _char(va_list args, int *count);
 void _string(va_list args, int *count);
+void _dec(va_list args, int *count);
+void _int(va_list args, int *count);
 
 #endif /* MAIN_H */
